@@ -1,19 +1,53 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LearningCurve : MonoBehaviour
 {
+    public GameObject directionLight;
+    private Transform camTransform;
+    private Transform lightTransform;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        camTransform = GetComponent<Transform>();
 
-    }
+        Debug.Log(camTransform.localPosition);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //lightTransform = GameObject.Find("Directional Light").GetComponent<Transform>();
+
+        lightTransform = GetComponent<Transform>();
+
+        Debug.Log(lightTransform.localPosition);
+
+        var hero = new Character();
+
+        var hero2 = new Character();
+
+        var huntingBow = new Weapon("Hunting Bow", 105);
+
+        var knight = new Paladin("Sir Arthur", huntingBow);
+
+        hero2.name = "Sir Krane the Brave";
+
+        hero.PrintStatsInfo();
+
+        hero2.PrintStatsInfo();
+
+        knight.PrintStatsInfo();
+
+        //hero2.Reset();
+
+        var heroine = new Character("Agatha");
+
+        heroine.PrintStatsInfo();
+
+        var warBow = huntingBow;
+
+        warBow.name = "War Bow";
+
+        warBow.damage = 155;
+
+        huntingBow.PrintWeaponStats();
+
+        warBow.PrintWeaponStats();
     }
 }
